@@ -1,7 +1,5 @@
 # Naoris Protocol Automation Bot
 
-![Banner](https://via.placeholder.com/1200x400.png?text=Naoris+Protocol+Automation+Bot)
-
 Bot ini dirancang untuk mengotomatisasi proses heartbeat pada Naoris Protocol. Bot akan mengirimkan heartbeat secara berkala untuk setiap akun yang terdaftar, dengan dukungan proxy untuk meningkatkan privasi dan keamanan.
 
 ---
