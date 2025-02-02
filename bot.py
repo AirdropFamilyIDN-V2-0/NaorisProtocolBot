@@ -165,8 +165,20 @@ class HeartbeatService:
                 print(f"{wallet_color}[SUCCESS] Wallet {account['wallet_number']}: Heartbeat sent for wallet {account['decoded']['wallet_address']} (with proxy)")
             else:
                 print(f"{wallet_color}[SUCCESS] Wallet {account['wallet_number']}: Heartbeat sent for wallet {account['decoded']['wallet_address']} (without proxy)")
-
-            return response.json()
+            # Check if the response status code indicates success
+            if response.status_code == 200:
+                try:
+                    # Attempt to parse the response as JSON
+                    data = response.json()
+                    # Use `data` as a dictionary
+                    print(data)
+                    return data
+                except ValueError:
+                    print("Response is not in valid JSON format.")
+                    return None
+            else:
+                print(f"Request failed with status code: {response.status_code}")
+                return None
         except Exception as e:
             account["status"] = "error"
             print(f"{Fore.RED}[ERROR] Wallet {account['wallet_number']}: Error sending heartbeat for wallet {account['decoded']['wallet_address']}: {e}")
